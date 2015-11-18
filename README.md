@@ -37,7 +37,7 @@ Add the directive as the first element in your app container element:
 Load whenever the app is opened:
 
 ```js
-.run(['$lockScreen', function($lockScreen) {
+.run(['$lockScreen', $ionicPlatform, function($lockScreen, $ionicPlatform) {
     $ionicPlatform.ready(function() {
       $lockScreen.show({
         code: '1234',
