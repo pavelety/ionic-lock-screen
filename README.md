@@ -21,7 +21,9 @@
 
 Include as a dependency in your angular module
 
-    angular.module('myApp', ['ionic-lock-screen'])
+```js
+angular.module('myApp', ['ionic-lock-screen'])
+```
 
 Add the directive as the first element in your app container element:
 
