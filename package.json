@@ -1,0 +1,32 @@
+{
+  "name": "ionic-lock-screen",
+  "version": "1.0.0",
+  "description": "A pin code lock screen for ionic cordova mobile apps",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lock",
+    "screen",
+    "pin",
+    "code",
+    "ionic",
+    "cordova",
+    "mobile",
+    "ios",
+    "android",
+    "app"
+  ],
+  "author": "Alex Disler",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "5.5.8",
+    "gulp-babel": "5.1.0",
+    "gulp-concat": "^2.2.0",
+    "gulp-ng-annotate": "^0.3.3",
+    "gulp-plumber": "0.6.6",
+    "gulp": "3.9.0",
+    "gulp-uglify": "^1.0.1"
+  }
+}
