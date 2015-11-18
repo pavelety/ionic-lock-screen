@@ -5,7 +5,7 @@
 ## Features
 
 - Themable with CSS
-- Supports [Touch ID]() on iOS using [cordova-plugin-touchid](https://github.com/leecrossley/cordova-plugin-touchid)
+- Supports [Touch ID](https://github.com/AlexDisler/ionic-lock-screen#touch-id-ios-only) on iOS using [cordova-plugin-touchid](https://github.com/leecrossley/cordova-plugin-touchid)
 
 ## Install
 
@@ -29,7 +29,7 @@ Install [cordova-plugin-touchid](https://github.com/leecrossley/cordova-plugin-t
 
     $ cordova plugin add cordova-plugin-touchid --save
 
-Set ```touchId:true```:
+Set ```touchId:true```
 
 ```js
 $lockScreen.show({
