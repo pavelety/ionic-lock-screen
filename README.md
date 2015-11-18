@@ -21,7 +21,7 @@
 
 Include as a dependency in your angular module
 
-angular.module('myApp', ['ionic-lock-screen'])
+    angular.module('myApp', ['ionic-lock-screen'])
 
 Add the directive as the first element in your app container element:
 
@@ -34,7 +34,7 @@ Add the directive as the first element in your app container element:
 
 Load whenever the app is opened:
 
-```
+```js
 .run(['$lockScreen', function($lockScreen) {
     $ionicPlatform.ready(function() {
       $lockScreen.show({
