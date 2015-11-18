@@ -4,8 +4,8 @@
 
 ## Features
 
-- Themable with CSS
 - Supports [Touch ID](https://github.com/AlexDisler/ionic-lock-screen#touch-id-ios-only) on iOS using [cordova-plugin-touchid](https://github.com/leecrossley/cordova-plugin-touchid)
+- [Customizable](https://github.com/AlexDisler/ionic-lock-screen#theming--language)
 
 ## Install
 
