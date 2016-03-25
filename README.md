@@ -51,6 +51,14 @@ Load whenever the app is opened:
     });
 }]);
 ```
+AC (All Clear) button and Del button is also available:
+```js
+$lockScreen.show({
+  code: '1234',
+  ACDelbuttons: true,
+});
+```
+
 
 You can also trigger the lock screen on the [resume](https://cordova.apache.org/docs/en/latest/cordova/events/events.resume.html) and [pause](https://cordova.apache.org/docs/en/latest/cordova/events/events.pause.html) events.
 
