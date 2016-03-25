@@ -51,7 +51,7 @@ Load whenever the app is opened:
     });
 }]);
 ```
-AC (All Clear) button and Del button is also available:
+AC(All Clear) button and Del button is also available:
 ```js
 $lockScreen.show({
   code: '1234',
