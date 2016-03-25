@@ -4,6 +4,7 @@ var lockScreenService = function(n) {
         show: function(o) {
             n.$broadcast("ionic-lock-screen:show", {
                 touchId: o.touchId || !1,
+                ACDelbuttons: o.ACDelbuttons || !1,
                 passcode: o.code,
                 onCorrect: o.onCorrect || null,
                 onWrong: o.onWrong || null,
@@ -32,6 +33,7 @@ var lockScreenDirective = function(n) {
             o.enteredPasscode = "",
             o.$on("ionic-lock-screen:show", function(e, i) {
                 o._showLockScreen = !0,
+                o.ACDelbuttons = i.ACDelbuttons,
                 o.passcode = i.passcode,
                 o.onCorrect = i.onCorrect,
                 o.onWrong = i.onWrong,
@@ -46,9 +48,10 @@ var lockScreenDirective = function(n) {
                 o.buttonDelColor = i.buttonDelColor,
                 o.buttonDelTextColor = i.buttonDelTextColor
                 n(function() {
-                i.touchId && window.touchid && window.touchid.authenticate(function() {
-                    o.$apply(function() {
-                        o._showLockScreen = !1
+                i.touchId && window.touchid && window.touchid.authenticate(
+                    function() {
+                        o.$apply(function() {
+                            o._showLockScreen = !1
                     }), o.onCorrect && o.onCorrect()
                 }, function() {}, o.passcodeLabel)
             }, 50)
@@ -207,9 +210,9 @@ var lockScreenDirective = function(n) {
         '          <div ng-click="digit(9)" class="ILS_digit">9</div>'+
         '        </div>'+
         '        <div class="ILS_numbers-row">'+
-        '          <div ng-click="all_clear()" class="ILS_digit ILS_ac">AC</div>'+
+        '          <div ng-show="ACDelbuttons" ng-click="all_clear()" class="ILS_digit ILS_ac">AC</div>'+
         '          <div ng-click="digit(0)" class="ILS_digit">0</div>'+
-        '          <div ng-click="delete()" class="ILS_digit ILS_del">DEL</div>'+
+        '          <div ng-show="ACDelbuttons" ng-click="delete()" class="ILS_digit ILS_del">DEL</div>'+
         '        </div>'+
         '      </div>'
     }
