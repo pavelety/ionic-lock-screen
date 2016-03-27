@@ -2,17 +2,22 @@ const lockScreenService = ($rootScope) => {
   return {
     show(settings) {
       $rootScope.$broadcast('ionic-lock-screen:show', {
-        touchId         : settings.touchId || false,
-        passcode        : settings.code,
-        onCorrect       : settings.onCorrect || null,
-        onWrong         : settings.onWrong || null,
-        passcodeLabel   : settings.passcodeLabel || 'Enter Passcode',
-        touchLabel      : settings.passcodeLabel || 'Verify Passcode',
-        backgroundColor : settings.backgroundColor || '#F1F1F1',
-        textColor       : settings.textColor || '#464646',
-        buttonColor     : settings.buttonColor || '#F8F8F8',
-        buttonTextColor : settings.buttonTextColor || '#464646',
-        buttonPressed   : settings.buttonPressed || '#E0E0E0',
+        touchId           : settings.touchId || false,
+        ACDelbuttons      : settings.ACDelbuttons || false,
+        passcode          : settings.code,
+        onCorrect         : settings.onCorrect || null,
+        onWrong           : settings.onWrong || null,
+        passcodeLabel     : settings.passcodeLabel || 'Enter Passcode',
+        touchLabel        : settings.passcodeLabel || 'Verify Passcode',
+        backgroundColor   : settings.backgroundColor || '#F1F1F1',
+        textColor         : settings.textColor || '#464646',
+        buttonColor       : settings.buttonColor || '#F8F8F8',
+        buttonTextColor   : settings.buttonTextColor || '#464646',
+        buttonPressed     : settings.buttonPressed || '#E0E0E0',
+        buttonACColor     : settings.buttonACColor || "#F8F8F8",
+        buttonACTextColor : settings.buttonACTextColor || "#464646",
+        buttonDelColor    : settings.buttonDelColor || "#F8F8F8",
+        buttonDelTextColor: settings.buttonDelTextColor || "#464646"
       });
     },
   };
@@ -26,16 +31,21 @@ const lockScreenDirective = ($timeout) => {
       let passcodeAttempts = 0;
       scope.enteredPasscode = '';
       scope.$on('ionic-lock-screen:show', (e, data) => {
-        scope._showLockScreen = true;
-        scope.passcode        = data.passcode;
-        scope.onCorrect       = data.onCorrect;
-        scope.onWrong         = data.onWrong;
-        scope.passcodeLabel   = data.passcodeLabel;
-        scope.backgroundColor = data.backgroundColor;
-        scope.textColor       = data.textColor;
-        scope.buttonColor     = data.buttonColor;
-        scope.buttonTextColor = data.buttonTextColor;
-        scope.buttonPressed   = data.buttonPressed;
+        scope._showLockScreen   = true;
+        scope.ACDelbuttons      = data.ACDelbuttons;
+        scope.passcode          = data.passcode;
+        scope.onCorrect         = data.onCorrect;
+        scope.onWrong           = data.onWrong;
+        scope.passcodeLabel     = data.passcodeLabel;
+        scope.backgroundColor   = data.backgroundColor;
+        scope.textColor         = data.textColor;
+        scope.buttonColor       = data.buttonColor;
+        scope.buttonTextColor   = data.buttonTextColor;
+        scope.buttonPressed     = data.buttonPressed;
+        scope.buttonACColor     = data.buttonACColor;
+        scope.buttonACTextColor =data.buttonACTextColor;
+        scope.buttonDelColor    = data.buttonDelColor;
+        scope.buttonDelTextColor=data.buttonDelTextColor;
         $timeout(() => {
           if (data.touchId && window.touchid) {
             window.touchid.authenticate(() => {
@@ -50,6 +60,12 @@ const lockScreenDirective = ($timeout) => {
           }
         }, 50);
       });
+      scope.all_clear = () => {
+        scope.enteredPasscode = "";
+      };
+      scope.delete = () => {
+        scope.enteredPasscode = scope.enteredPasscode.slice(0,-1);
+      };
       scope.digit = (digit) => {
         scope.selected = +digit;
         if (scope.passcodeWrong) {
@@ -157,6 +173,14 @@ const lockScreenDirective = ($timeout) => {
             -webkit-animation-duration: 0.3;
             animation-duration: 0.3s;
           }
+          .ILS_ac {
+            color: {{buttonACTextColor}};
+            background-color: {{buttonACColor}};
+            }
+          .ILS_del {
+            color: {{buttonDelTextColor}};
+            background-color: {{buttonDelColor}};
+            }
           .ILS_full {
             background-color:{{textColor}}!important;
           }
@@ -195,7 +219,9 @@ const lockScreenDirective = ($timeout) => {
           <div ng-click="digit(9)" class="ILS_digit">9</div>
         </div>
         <div class="ILS_numbers-row">
+          <div ng-show="ACDelbuttons" ng-click="all_clear()" class="ILS_digit ILS_ac">AC</div>
           <div ng-click="digit(0)" class="ILS_digit">0</div>
+          <div ng-show="ACDelbuttons" ng-click="delete()" class="ILS_digit ILS_del">DEL</div>
         </div>
       </div>
     `,
