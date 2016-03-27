@@ -18,15 +18,41 @@
     "android",
     "app"
   ],
-  "author": "Alex Disler",
+  "author": {
+    "name": "Alex Disler"
+  },
   "license": "MIT",
   "devDependencies": {
-    "babel": "5.5.8",
-    "gulp-babel": "5.1.0",
-    "gulp-concat": "^2.2.0",
-    "gulp-ng-annotate": "^0.3.3",
-    "gulp-plumber": "0.6.6",
-    "gulp": "3.9.0",
-    "gulp-uglify": "^1.0.1"
-  }
+    "babel-core": "^6.7.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "^6.7.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-uglify": "^1.5.3"
+  },
+  "gitHead": "2f52d4820664edc32f2de9fea57a12be07ca5eb5",
+  "_id": "ionic-lock-screen@1.0.0",
+  "_shasum": "79aeb78a779552c0ba69ed93b36665cba2bd61b0",
+  "_from": "ionic-lock-screen@*",
+  "_npmVersion": "2.7.5",
+  "_nodeVersion": "0.10.33",
+  "_npmUser": {
+    "name": "alex101",
+    "email": "alex@binarypattern.com"
+  },
+  "maintainers": [
+    {
+      "name": "alex101",
+      "email": "alex@binarypattern.com"
+    }
+  ],
+  "dist": {
+    "shasum": "79aeb78a779552c0ba69ed93b36665cba2bd61b0",
+    "tarball": "http://registry.npmjs.org/ionic-lock-screen/-/ionic-lock-screen-1.0.0.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/ionic-lock-screen/-/ionic-lock-screen-1.0.0.tgz"
 }
