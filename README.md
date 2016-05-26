@@ -1,11 +1,11 @@
 # ionic-lock-screen
 
-<img src="https://raw.githubusercontent.com/AlexDisler/ionic-lock-screen/master/ionic-lock-screen.gif"/>
+<img src="ionic-lock-screen.gif"/>
 
 ## Features
 
-- Supports [Touch ID](https://github.com/AlexDisler/ionic-lock-screen#touch-id-ios-only) on iOS using [cordova-plugin-touchid](https://github.com/leecrossley/cordova-plugin-touchid)
-- [Customizable](https://github.com/AlexDisler/ionic-lock-screen#theming--language)
+- Supports [Touch ID](#touch-id-ios-only) on iOS using [cordova-plugin-touchid](https://github.com/leecrossley/cordova-plugin-touchid)
+- [Customizable](#theming--language)
 
 ## Install
 
@@ -64,7 +64,7 @@ You can also trigger the lock screen on the [resume](https://cordova.apache.org/
 
 ## Touch ID (iOS only)
 
-<img src="https://raw.githubusercontent.com/AlexDisler/ionic-lock-screen/master/lock-screen-passcode.png"/>
+<img src="lock-screen-passcode.png"/>
 
 Install [cordova-plugin-touchid](https://github.com/leecrossley/cordova-plugin-touchid)
 
@@ -81,7 +81,7 @@ $lockScreen.show({
 
 ### Theming / Language
 
-See available options [here](https://github.com/AlexDisler/ionic-lock-screen/blob/master/src/lock-screen/lock-screen.js#L9-L15).
+See available options [here](src/lock-screen/lock-screen.js#L5-L20).
 
 # License
 
