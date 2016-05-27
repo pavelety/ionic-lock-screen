@@ -8,7 +8,7 @@ const lockScreenService = ($rootScope) => {
         onCorrect         : settings.onCorrect || null,
         onWrong           : settings.onWrong || null,
         passcodeLabel     : settings.passcodeLabel || 'Enter Passcode',
-        touchLabel        : settings.passcodeLabel || 'Verify Passcode',
+        touchLabel        : settings.touchLabel,
         backgroundColor   : settings.backgroundColor || '#F1F1F1',
         textColor         : settings.textColor || '#464646',
         buttonColor       : settings.buttonColor || '#F8F8F8',
@@ -37,26 +37,31 @@ const lockScreenDirective = ($timeout) => {
         scope.onCorrect         = data.onCorrect;
         scope.onWrong           = data.onWrong;
         scope.passcodeLabel     = data.passcodeLabel;
+        scope.touchLabel        = data.touchLabel;
         scope.backgroundColor   = data.backgroundColor;
         scope.textColor         = data.textColor;
         scope.buttonColor       = data.buttonColor;
         scope.buttonTextColor   = data.buttonTextColor;
         scope.buttonPressed     = data.buttonPressed;
         scope.buttonACColor     = data.buttonACColor;
-        scope.buttonACTextColor =data.buttonACTextColor;
+        scope.buttonACTextColor = data.buttonACTextColor;
         scope.buttonDelColor    = data.buttonDelColor;
         scope.buttonDelTextColor=data.buttonDelTextColor;
         $timeout(() => {
           if (data.touchId && window.touchid) {
-            window.touchid.authenticate(() => {
-              // success
-              scope.$apply(() => {
-                scope._showLockScreen = false;
-              });
-              scope.onCorrect && scope.onCorrect();
+            window.touchid.checkSupport(() => {
+              window.touchid.authenticate(() => {
+                // success
+                scope.$apply(() => {
+                  scope._showLockScreen = false;
+                });
+                scope.onCorrect && scope.onCorrect();
+              }, () => {
+                // failure
+              }, scope.touchLabel);
             }, () => {
-              // failure
-            }, scope.passcodeLabel);
+              console.info('touch id is not supported on your device');
+            });
           }
         }, 50);
       });
