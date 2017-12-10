@@ -1,7 +1,7 @@
 const lockScreenService = ($rootScope) => {
   return {
     show(settings) {
-      $rootScope.$broadcast('ionic-lock-screen:show', {
+      $rootScope.$broadcast('ionic-lockscreen:show', {
         touchId           : settings.touchId || false,
         ACDelbuttons      : settings.ACDelbuttons || false,
         passcode          : settings.code,
@@ -20,6 +20,9 @@ const lockScreenService = ($rootScope) => {
         buttonDelTextColor: settings.buttonDelTextColor || "#464646"
       });
     },
+    hide() {
+      $rootScope.$broadcast('ionic-lockscreen:hide');
+    },
   };
 };
 
@@ -30,7 +33,7 @@ const lockScreenDirective = ($timeout) => {
     link (scope) {
       let passcodeAttempts = 0;
       scope.enteredPasscode = '';
-      scope.$on('ionic-lock-screen:show', (e, data) => {
+      scope.$on('ionic-lockscreen:show', (e, data) => {
         scope._showLockScreen   = true;
         scope.ACDelbuttons      = data.ACDelbuttons;
         scope.passcode          = data.passcode;
@@ -64,6 +67,10 @@ const lockScreenDirective = ($timeout) => {
             });
           }
         }, 50);
+      });
+      scope.$on('ionic-lockscreen:hide', () => {
+        scope._showLockScreen = false;
+        scope.all_clear();
       });
       scope.all_clear = () => {
         scope.enteredPasscode = "";
@@ -233,6 +240,6 @@ const lockScreenDirective = ($timeout) => {
   };
 };
 
-angular.module('ionic-lock-screen', []);
-angular.module('ionic-lock-screen').directive('lockScreen', lockScreenDirective);
-angular.module('ionic-lock-screen').service('$lockScreen', lockScreenService);
+angular.module('ionic-lockscreen', []);
+angular.module('ionic-lockscreen').directive('lockScreen', lockScreenDirective);
+angular.module('ionic-lockscreen').service('$lockScreen', lockScreenService);

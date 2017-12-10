@@ -1,4 +1,4 @@
-# ionic-lock-screen
+# ionic-lockscreen
 
 <img src="ionic-lock-screen.gif"/>
 
@@ -11,18 +11,18 @@
 
 ### NPM
 
-    $ npm install ionic-lock-screen --save
+    $ npm install ionic-lockscreen --save
 
 ### Bower
 
-    $ bower install ionic-lock-screen --save
+    $ bower install ionic-lockscreen --save
 
 ## Use
 
 Include as a dependency in your angular module
 
 ```js
-angular.module('myApp', ['ionic-lock-screen'])
+angular.module('myApp', ['ionic-lockscreen'])
 ```
 
 Add the directive as the first element in your app container element:
@@ -58,6 +58,10 @@ $lockScreen.show({
   ACDelbuttons: true,
 });
 ```
+Hide lockscreen if needed:
+```js
+$lockScreen.hide();
+```
 
 
 You can also trigger the lock screen on the [resume](https://cordova.apache.org/docs/en/latest/cordova/events/events.resume.html) and [pause](https://cordova.apache.org/docs/en/latest/cordova/events/events.pause.html) events.
@@ -82,6 +86,13 @@ $lockScreen.show({
 ### Theming / Language
 
 See available options [here](src/lock-screen/lock-screen.js#L5-L20).
+
+# Contributing
+## Build
+```shell
+npm i
+gulp
+```
 
 # License
 
