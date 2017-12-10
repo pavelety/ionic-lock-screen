@@ -1,6 +1,6 @@
 {
   "name": "ionic-lockscreen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A pin code lock screen for ionic cordova mobile apps",
   "main": "./dist/index.js",
   "scripts": {
